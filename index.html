@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengajuan Dana Tunai</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f0f2f5;
+}
+
+.header {
+  background: #0d6efd;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.container {
+  padding: 15px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 14px;
+  background: #25D366;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+  💰 Pengajuan Dana Tunai Cepat
+</div>
+
+<div class="container">
+  <div class="card">
+
+    <h3>Isi Data Pengajuan</h3>
+
+    <form onsubmit="kirimWA(event)">
+      <input type="text" id="nama" placeholder="Nama Lengkap" required>
+      <input type="tel" id="hp" placeholder="Nomor WhatsApp" required>
+      <input type="text" id="ktp" placeholder="Nomor KTP" required>
+      <input type="text" id="alamat" placeholder="Alamat Lengkap" required>
+      <input type="number" id="jumlah" placeholder="Jumlah Dana (Rp)" required>
+      <textarea id="catatan" placeholder="Catatan tambahan"></textarea>
+
+      <button type="submit">Kirim Pengajuan</button>
+    </form>
+
+  </div>
+</div>
+
+<script>
+function kirimWA(e) {
+  e.preventDefault();
+
+  let nama = document.getElementById("nama").value;
+  let hp = document.getElementById("hp").value;
+  let ktp = document.getElementById("ktp").value;
+  let alamat = document.getElementById("alamat").value;
+  let jumlah = document.getElementById("jumlah").value;
+  let catatan = document.getElementById("catatan").value;
+
+  let pesan = `PENGAJUAN DANA TUNAI%0A
+Nama: ${nama}%0A
+HP: ${hp}%0A
+KTP: ${ktp}%0A
+Alamat: ${alamat}%0A
+Jumlah: Rp ${jumlah}%0A
+Catatan: ${catatan}`;
+
+  let url = "https://wa.me/628XXXXXXXXXX?text=" + pesan;
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
